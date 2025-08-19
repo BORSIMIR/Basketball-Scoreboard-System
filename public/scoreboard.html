@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Scoreboard Display</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./sweetalert2.min.css">
+    <script src="./sweetalert2.min.js"></script>
+</head>
+<body class="scoreboard-display">
+    <div class="scoreboard">
+        <div class="main-display">
+            <!-- Home Team -->
+            <div class="team-section">
+                <div class="team-name">
+                    <span id="home-name-display">HOME</span>
+                </div>
+                <div class="score" id="home-score">0</div>
+            </div>
+
+            <!-- Clock Section -->
+            <div class="clock-section">
+                <div class="quarter-display" id="quarter">1st Quarter</div>
+                <div class="game-clock" id="game-clock">10:00</div>
+                <div class="shot-clock" id="shot-clock">24</div>
+            </div>
+
+            <!-- Away Team -->
+            <div class="team-section">
+                <div class="team-name">
+                    <span id="away-name-display">AWAY</span>
+                </div>
+                <div class="score" id="away-score">0</div>
+            </div>
+        </div>
+
+        <!-- Fouls Section -->
+        <div class="fouls-section">
+            <div class="foul-counter">
+                <h3 id="home-foul-label">Home Team Fouls</h3>
+                <div class="foul-count" id="home-fouls">0</div>
+                <div class="timeout-counter">
+                    <h4>Timeouts Remaining</h4>
+                    <div class="timeout-count" id="home-timeouts">7</div>
+                </div>
+            </div>
+            <div class="foul-counter">
+                <h3 id="away-foul-label">Away Team Fouls</h3>
+                <div class="foul-count" id="away-fouls">0</div>
+                <div class="timeout-counter">
+                    <h4>Timeouts Remaining</h4>
+                    <div class="timeout-count" id="away-timeouts">7</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <audio id="buzzerSound" src="./public/basketball_buzzer_improved.mp3" preload="auto"></audio>
+    <audio id="substitutionSound" src="./public/basketball_substitution_buzzer.mp3" preload="auto"></audio>
+
+    <script src="./script.js"></script>
+    <script>
+        // Display updates for scoreboard
+        function updateDisplay() {
+            document.getElementById('home-score').textContent = gameState.homeScore;
+            document.getElementById('away-score').textContent = gameState.awayScore;
+            document.getElementById('home-fouls').textContent = gameState.homeFouls;
+            document.getElementById('away-fouls').textContent = gameState.awayFouls;
+            document.getElementById('home-timeouts').textContent = gameState.homeTimeouts;
+            document.getElementById('away-timeouts').textContent = gameState.awayTimeouts;
+            
+            // Update team names
+            document.getElementById('home-name-display').textContent = gameState.homeName;
+            document.getElementById('away-name-display').textContent = gameState.awayName;
+            
+            // Update quarter display
+            const quarters = ['1st', '2nd', '3rd', '4th'];
+            document.getElementById('quarter').textContent = `${quarters[gameState.quarter - 1]} Quarter`;
+            
+            // Update clock colors based on time
+            const gameClock = document.getElementById('game-clock');
+            const shotClock = document.getElementById('shot-clock');
+            
+            // Game clock display with milliseconds for last 10 seconds
+            const showGameMilliseconds = gameState.gameTime <= 10;
+            gameClock.textContent = formatTime(gameState.gameTime, showGameMilliseconds);
+            
+            // Shot clock display with milliseconds for last 5 seconds
+            const showShotMilliseconds = gameState.shotTime <= 5;
+            shotClock.textContent = formatShotClock(gameState.shotTime, showShotMilliseconds);
+            
+            // Game clock warnings
+            if (gameState.gameTime <= 60) {
+                gameClock.className = 'game-clock danger';
+            } else if (gameState.gameTime <= 120) {
+                gameClock.className = 'game-clock warning';
+            } else {
+                gameClock.className = 'game-clock';
+            }
+            
+            // Shot clock warnings
+            if (gameState.shotTime <= 5) {
+                shotClock.className = 'shot-clock danger';
+            } else if (gameState.shotTime <= 10) {
+                shotClock.className = 'shot-clock warning';
+            } else {
+                shotClock.className = 'shot-clock';
+            }
+            
+            // Update team names in foul counters
+            document.getElementById('home-foul-label').textContent = `${gameState.homeName} Team Fouls`;
+            document.getElementById('away-foul-label').textContent = `${gameState.awayName} Team Fouls`;
+        }
+
+        // Initialize
+        updateDisplay();
+    </script>
+</body>
+</html>
