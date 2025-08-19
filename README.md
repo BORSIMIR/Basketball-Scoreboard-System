@@ -43,7 +43,7 @@ A comprehensive, professional-grade web-based basketball scoreboard system with 
 ## 📁 File Structure
 
 ```
-basketball-scoreboard/
+Basketball-Scoreboard-System-main/
 ├── controlpanel.html          # Main control interface
 ├── public/
 │   ├── scoreboard.html        # Spectator display
