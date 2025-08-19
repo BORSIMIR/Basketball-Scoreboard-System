@@ -1,9 +1,10 @@
 # Basketball Scoreboard System 🏀
 
+[🔗 Live Demo – Basketball Scoreboard System](https://borsimir.github.io/Basketball-Scoreboard-System/controlpanel.html)
+
 A comprehensive, professional-grade web-based basketball scoreboard system with real-time synchronization, automatic backups, and intuitive game management features.
 
 ## 🌟 Features
-
 ### Core Functionality
 - **Real-time Score Management** - Track scores for both teams with +1, +2, +3 point buttons
 - **Dual Clock System** - Game clock (10 minutes) and shot clock (24 seconds) with precise timing
