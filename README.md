@@ -1,6 +1,6 @@
 # Basketball Scoreboard System 🏀
 
-**[🔗 Live Demo – Basketball Scoreboard System](https://borsimir.github.io/Basketball-Scoreboard-System/controlpanel.html)**
+[🔗 Live Demo – Basketball Scoreboard System](https://borsimir.github.io/Basketball-Scoreboard-System/controlpanel.html)
 
 A comprehensive, professional-grade web-based basketball scoreboard system with real-time synchronization, automatic backups, and intuitive game management features.
 
