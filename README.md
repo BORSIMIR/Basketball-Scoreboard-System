@@ -212,7 +212,7 @@ This project is open source. Feel free to use, modify, and distribute according 
 
 **Developer**: Dale Andrew Abila  
 **GitHub**: [@BORSIMIR](https://github.com/BORSIMIR)  
-**Repository**: [Basketball Scoreboard System]([https://github.com/BORSIMIR/basketball-scoreboard](https://github.com/BORSIMIR/Basketball-Scoreboard-System)
+**Repository**: [Basketball Scoreboard System](https://github.com/BORSIMIR/Basketball-Scoreboard-System)
 
 ---
 
